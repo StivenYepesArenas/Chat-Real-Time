@@ -10,6 +10,11 @@ const io = new SocketServer(server)
 
 io.on('connection', socket => {
     console.log('Client conected')
+
+    socket.on('mensaje', (data) => {
+        socket.broadcast.emit('mensaje',data)
+    })
+
 })
 
 server.listen(port, () => {
