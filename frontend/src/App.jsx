@@ -9,21 +9,18 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     socket.emit("mensaje", mensaje);
-    setMensaje(""); 
   };
 
   useEffect(() => {
-    const handleMensaje = (mensaje) => {
-      setMensajes(prevMensajes => [...prevMensajes, mensaje]);
-    };
+    socket.on("mensaje", (mensaje) => {
+      mensajeRecivido(mensaje);
+    });
+  }, []);
 
-    socket.on("mensaje", handleMensaje);
-
-    
-    return () => {
-      socket.off("mensaje", handleMensaje);
-    };
-  }, []); 
+  const mensajeRecivido = (mensaje) => {
+    setMensajes((state )=>[...state, mensaje]
+    )
+  };
 
   return (
     <div>
