@@ -22,7 +22,11 @@ function App() {
   }, []);
 
   const mensajeRecivido = (mensaje) => {
-    setMensajes((state) => [...state, mensaje]);
+    const newMensaje = {
+      body: mensaje, 
+      from: "Me"
+    }
+    setMensajes((state) => [...state, newMensaje]);
   };
 
   return (
@@ -38,7 +42,8 @@ function App() {
       </form>
       <ul>
         {mensajes.map((mensaje, i) => (
-          <li key={i}>{mensaje}</li>
+          <li key={i}>
+          {mensaje.from} : {mensaje.body}</li>
         ))}
       </ul>
     </div>
