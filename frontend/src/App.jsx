@@ -8,7 +8,11 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMensajes([...mensajes, mensaje]);
+    const newMensaje = {
+      body: mensaje, 
+      from: "Me"
+    }
+    setMensajes([...mensajes, newMensaje]);
     socket.emit("mensaje", mensaje);
     setMensaje("")
   };
@@ -22,11 +26,7 @@ function App() {
   }, []);
 
   const mensajeRecivido = (mensaje) => {
-    const newMensaje = {
-      body: mensaje, 
-      from: "Me"
-    }
-    setMensajes((state) => [...state, newMensaje]);
+      setMensajes((state) => [...state, mensaje]);
   };
 
   return (
