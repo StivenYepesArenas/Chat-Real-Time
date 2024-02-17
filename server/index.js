@@ -9,7 +9,11 @@ const server = http.createServer(app)
 const io = new SocketServer(server)
 
 io.on('connection', socket => {
-    console.log('Client conected')
+    console.log('Un usuario se ha conectado')
+
+    socket.on('disconnect', ()=>{
+        console.log('Un usuario se ha desconectado');
+    })
 
     socket.on('mensaje', (body) => {
         socket.broadcast.emit('mensaje', {
