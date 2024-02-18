@@ -13,7 +13,7 @@ function App() {
       from: "Me"
     }
     setMensajes([...mensajes, newMensaje]);
-    socket.emit("mensaje", mensaje);
+    socket.emit("mensaje", mensaje); //Desde este evento enviamos lo que escriben en el formulario a nuestro back.
     setMensaje("")
   };
 
