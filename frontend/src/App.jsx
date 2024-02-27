@@ -9,12 +9,12 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newMensaje = {
-      body: mensaje, 
-      from: "Me"
-    }
+      body: mensaje,
+      from: "Me",
+    };
     setMensajes([...mensajes, newMensaje]);
     socket.emit("mensaje", mensaje); //Desde este evento enviamos lo que escriben en el formulario a nuestro back.
-    setMensaje("")
+    setMensaje("");
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   const mensajeRecivido = (mensaje) => {
-      setMensajes((state) => [...state, mensaje]);
+    setMensajes((state) => [...state, mensaje]);
   };
 
   return (
@@ -43,7 +43,8 @@ function App() {
       <ul>
         {mensajes.map((mensaje, i) => (
           <li key={i}>
-          {mensaje.from} : {mensaje.body}</li>
+            {mensaje.from} : {mensaje.body}
+          </li>
         ))}
       </ul>
     </div>
