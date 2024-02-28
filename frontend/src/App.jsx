@@ -37,10 +37,10 @@ function App() {
           {mensajes.map((mensaje, i) => (
             <li
               key={i}
-              className={`my-2 p-2 table text-sm rounded-md ${
+              className={`my-2  p-2  table text-sm rounded-md ${
                 mensaje.from === "Me"
-                  ? "bg-blue-500 self-end justify-self-end"
-                  : "bg-green-500 self-start"
+                  ? "bg-blue-500 self-end justify-self-end mr-4"
+                  : "bg-green-500 self-start ml-4"
               }`}
             >
               <span className="text-xs text-slate-300 block">
